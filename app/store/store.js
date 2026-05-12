@@ -60,6 +60,7 @@ const useJapaStore = create(
         email,
         phone_number,
         pass_word,
+        recaptcha_token,
       }) => {
         try {
           const data = {
@@ -68,6 +69,7 @@ const useJapaStore = create(
             email,
             phone_number,
             pass_word,
+            recaptcha_token,
           };
           set({ loading: true });
           const response = await axios.post(SIGN_UP, data);
