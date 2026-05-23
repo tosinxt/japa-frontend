@@ -10,7 +10,7 @@ const cookieStorage = {
   removeItem: (name) => Cookies.remove(name),
 };
 
-const BASE_URL = "https://api.japatalent.com/japa/v1/";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.japatalent.com/japa/v1/";
 const SIGN_UP = `${BASE_URL}registration/createaccount`;
 const LOG_IN = `${BASE_URL}user/login`;
 const VERIFY_OTP = `${BASE_URL}registration/verifyotp`;
