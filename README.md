@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# JapaTalent — Frontend
+
+The public-facing website for JapaTalent, a career platform offering job listings, courses/upskilling, career coaching, and a CV-revamp service.
+
+Built with [Next.js 14](https://nextjs.org/) (App Router), Tailwind CSS, MUI, and Zustand for state management.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and run the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Create a `.env` (or `.env.local`) with:
 
-## Learn More
+```bash
+NEXT_PUBLIC_API_URL=https://api.japatalent.com/japa/v1/   # backend API base URL
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-recaptcha-site-key    # Google reCAPTCHA on signup
+```
 
-To learn more about Next.js, take a look at the following resources:
+`NEXT_PUBLIC_API_URL` falls back to the production API if unset — override it to point at a local backend during development.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `app/(pages)/` — public routes: `jobs`, `courses`, `applied`, `careerCoaching`
+- `app/(auth)/` — auth routes: `signup`, `login`, `reset`, `resetEmail`, `verifyAccount`
+- `app/store/store.js` — single Zustand store for auth/session state and API calls
+- `app/components/` — shared UI components
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Deployed on [Vercel](https://vercel.com). Pushing to `main` triggers a production deploy.
